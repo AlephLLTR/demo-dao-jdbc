@@ -13,7 +13,11 @@ public class DB {
 
     private static Connection conn = null;
 
+    /**
+     * getConnection() criará uma conexão com o banco de dados utilizando os argumentos em db.properties, caso algum problema ocorra, um DBException() será lançado
+     */
     public static Connection getConnection() {
+        
         if (conn == null) {
             try {
                 Properties properties = loadProperties();
@@ -26,6 +30,10 @@ public class DB {
         return conn;
     }
 
+
+    /**
+     * O método privado loadProperties() irá carregar o arquivo db.properties e retornar as propriedades lidas, caso algum problema ocorra, um DBException() será lançado
+     */
     private static Properties loadProperties() {
         try (FileInputStream fs = new FileInputStream("db.properties")) {
             Properties properties = new Properties();
@@ -36,6 +44,9 @@ public class DB {
         }
     }
 
+    /**
+     * O método público closeConnection() irá fechar uma conexão existente criada pelo método getConnection(), caso algum problema ocorra, um DBException() será lançado
+     */
     public static void closeConnection() {
         if (conn != null) {
             try {
