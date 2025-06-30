@@ -15,7 +15,7 @@ public class App {
 
         System.out.println("=== TESTE 1: Seller findByID ===");
         Seller seller = sellerDao.findById(3);
-        
+
         System.out.println(seller);
 
         System.out.println("\n=== TESTE 2: Seller findByDepartment ===");
@@ -35,5 +35,12 @@ public class App {
         Seller newSeller = new Seller(null, "Greg", "greg@email.com", new Date(), 3400.0, department);
         sellerDao.insert(newSeller);
         System.out.println("Inserido: Novo ID = " + newSeller.getId());
+
+        System.out.println("\n=== TESTE 5: Seller update ===");
+        seller = sellerDao.findById(1);
+        seller.setName("Alan Wake");
+        seller.setEmail("a.wake@email.com");
+        sellerDao.update(seller);
+        System.out.println("Atualizado!");
     }
 }
